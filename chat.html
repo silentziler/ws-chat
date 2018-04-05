@@ -1,9 +1,32 @@
 <html>
-    <body id="chat-container">
-        <div>
-            <input id="message-field" type="text"> <button onclick="do_post()">&gt;</button>
-        </div>
+<body id="chat-container">
         <hr>
+
+    </body>
+        <div>
+<form name="data_entry" id="myForm" action="#">
+<input type = "text"
+        id = "message-field" 
+       onkeydown = "if (event.keyCode == 13)
+                        document.getElementById('btnSearch').click()"    
+/>
+
+<input type = "button"
+       id = "btnSearch"
+       value = "Submit"
+       onclick = "do_post();newReset();"
+/>
+</form>
+
+        </div>
+
+<script>
+function newReset() {
+    document.getElementById("myForm").reset();
+}
+</script>
+
+
         <script type="text/javascript">
             var ws_url = "ws://" + window.location.hostname + ":" + window.location.port + window.location.pathname + "ws/";
             var container = document.getElementById("chat-container");
@@ -29,5 +52,5 @@
                 myRequest.send(message_field_elem.value);
             }
         </script>
-    </body>
+
 </html>
